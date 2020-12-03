@@ -1,6 +1,6 @@
 {
   "name": "react-native-unity-ads",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "unity ads for react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -72,7 +72,7 @@
     "git": {
       "commitMessage": "chore: release ${version}",
       "tagName": "v${version}",
-      "requireCleanWorkingDir" : false
+      "requireCleanWorkingDir": false
     },
     "npm": {
       "publish": true
@@ -89,6 +89,10 @@
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
-    "targets": ["commonjs", "module", "typescript"]
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
   }
 }

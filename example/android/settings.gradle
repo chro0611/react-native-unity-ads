@@ -4,3 +4,5 @@ include ':app'
 
 include ':reactnativeunityads'
 project(':reactnativeunityads').projectDir = new File(rootProject.projectDir, '../../android')
+
+include ':unity-ads'

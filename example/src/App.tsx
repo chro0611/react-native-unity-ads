@@ -2,21 +2,26 @@ import * as React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import UnityAds from 'react-native-unity-ads';
 
+type FinishState = "ERROR" | "SKIPPED" | "COMPLETED" | "NOT_LOADED";
+
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
-    UnityAds.initialized('3923800', 'video', true)
+    UnityAds.initialized('3873165', 'video', true)
   }, []);
 
-  const showAd = () => {
+  const showAd = async () => {
+    console.log(await UnityAds.showAd());
 
-    UnityAds.adShow().then(result=>{
-      console.log(result);
-    }).catch(error=>{
-      console.log(error);
-    });
-
+    // UnityAds.isLoad().then(isLoad=>{
+    //   if(isLoad){
+    //     UnityAds.showAd().then((result)=>{
+    //       console.log(result);
+    //     }).catch(error=>{
+    //       console.log(error);
+    //     });
+    //   }
+    // })
   }
 
   return (

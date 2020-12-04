@@ -1,5 +1,5 @@
 {
-  "name": "react-native-unity-ads-moon",
+  "name": "react-native-unity-ads",
   "version": "0.1.2",
   "description": "unity ads for react native",
   "main": "lib/commonjs/index",

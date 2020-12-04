@@ -2,6 +2,9 @@
 
 Unity Ads는 initialize 호출한 이후 로드가 자동으로 되며, isLoad로 로드가 되었는지 확인 후 adShow를 호출하여 광고를 불러올 수 있습니다. adShow 이후에도 따로 로드없이 자동으로 광고가 로드되며, 이때 역시 isLoad로 광고가 제대로 로드되었는지 확인할 수 있습니다
 
+# Version
+현재는 안드로이드 버전까지만 작업된 상태입니다
+
 # Example
 
 ```tsx

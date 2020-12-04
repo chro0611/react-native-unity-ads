@@ -2,12 +2,36 @@
 
 Unity Ads는 initialize 호출한 이후 로드가 자동으로 되며, isLoad로 로드가 되었는지 확인 후 adShow를 호출하여 광고를 불러올 수 있습니다. adShow 이후에도 따로 로드없이 자동으로 광고가 로드되며, 이때 역시 isLoad로 광고가 제대로 로드되었는지 확인할 수 있습니다
 
+# Install
+
+```
+npm install react-native-unity-ads-moon
+```
+
+## 안드로이드
+
+- UnityAds SDK 다운로드 : [https://github.com/Unity-Technologies/unity-ads-android/releases](https://github.com/Unity-Technologies/unity-ads-android/releases)
+- android 폴더에 unity-ads 하위 폴더 생성 후 unity-ads.aar 파일 복사
+- unity-ads 폴더에 build.gradle 파일 생성 후 다음 코드 작성
+
+```java
+configurations.maybeCreate("default")
+artifacts.add("default", file('unity-ads.aar'))
+```
+
+- settings.gradle에 다음 코드 작성
+
+```java
+....
+include ':unity-ads'
+```
+
 # Example
 
 ```tsx
 import * as React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import UnityAds from 'react-native-unity-ads';
+import UnityAds from 'react-native-unity-ads-moon';
 
 type FinishState = "ERROR" | "SKIPPED" | "COMPLETED" | "NOT_LOADED";
 

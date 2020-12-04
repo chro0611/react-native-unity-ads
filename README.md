@@ -25,6 +25,8 @@ artifacts.add("default", file('unity-ads.aar'))
 ....
 include ':unity-ads'
 ```
+# Version
+현재는 안드로이드 버전까지만 작업된 상태입니다
 
 # Example
 

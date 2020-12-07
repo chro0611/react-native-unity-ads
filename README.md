@@ -8,7 +8,7 @@ Unity Ads는 initialize 호출한 이후 로드가 자동으로 되며, isLoad�
 npm install react-native-unity-ads-moon
 ```
 
-## 안드로이드
+## ANDROID
 
 - UnityAds SDK 다운로드 : [https://github.com/Unity-Technologies/unity-ads-android/releases](https://github.com/Unity-Technologies/unity-ads-android/releases)
 - android 폴더에 unity-ads 하위 폴더 생성 후 unity-ads.aar 파일 복사
@@ -25,8 +25,8 @@ artifacts.add("default", file('unity-ads.aar'))
 ....
 include ':unity-ads'
 ```
-# Version
-현재는 안드로이드 버전까지만 작업된 상태입니다
+## IOS
+pod install
 
 # Example
 

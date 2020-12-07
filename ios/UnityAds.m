@@ -49,7 +49,6 @@ RCT_EXPORT_METHOD(
     testMode:(BOOL)testMode
 ){
     [UnityAds initialize:gameId delegate:self testMode:testMode];
-    
     _placementId = placementId;
 }
 
@@ -67,9 +66,7 @@ RCT_EXPORT_METHOD(
     _showResolve = resolve;
     _showReject = reject;
     
-    UIViewController *view = RCTPresentedViewController();
-
-    [UnityAds show:view placementId:_placementId];
+    [UnityAds show:RCTPresentedViewController() placementId:_placementId];
 }
 
 
@@ -85,10 +82,14 @@ withFinishState:(UnityAdsFinishState)state {
     NSString *result = [self convertToString:state];
     
     _showResolve(result);
+    [self cleanUp];
 }
 
 - (void)unityAdsDidError:(UnityAdsError)error withMessage:(NSString *)message {
-    _showReject(@"E_FAILED_TO_LOAD", [self convertToErrorString:error], nil);
+    //_showReject(@"E_FAILED_TO_LOAD", [self convertToErrorString:error], nil);
+
+    _showResolve(@"ERROR");
+    [self cleanUp];
 }
 
 - (NSString*) convertToString:(UnityAdsFinishState) state {

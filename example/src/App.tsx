@@ -7,23 +7,21 @@ type FinishState = "ERROR" | "SKIPPED" | "COMPLETED" | "NOT_LOADED";
 export default function App() {
 
   React.useEffect(() => {
-    UnityAds.initialized('3923800', 'video', true);
+    UnityAds.initialized('3923800', 'video', __DEV__);
   }, []);
 
   const showAd = async () => {
-    //console.log(await UnityAds.showAd());
-
     console.log(await UnityAds.isLoad());
 
-    // UnityAds.isLoad().then(isLoad=>{
-    //   if(isLoad){
+    UnityAds.isLoad().then(isLoad=>{
+      if(isLoad){
         UnityAds.showAd().then((result)=>{
           console.log(result);
         }).catch(error=>{
           console.log(error);
         });
-    //   }
-    // })
+      }
+    })
   }
 
   return (

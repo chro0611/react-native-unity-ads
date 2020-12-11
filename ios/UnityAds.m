@@ -69,10 +69,9 @@ RCT_EXPORT_METHOD(
     [UnityAds show:RCTPresentedViewController() placementId:_placementId];
 }
 
-
 - (void)unityAdsReady:(NSString *)placementId {
     _loaded = true;
-    _loadResolve(@(_loaded));
+    _loadResolve(@(true));
 }
 
 - (void)unityAdsDidStart:(NSString *)placementId {
@@ -131,7 +130,6 @@ withFinishState:(UnityAdsFinishState)state {
 -(void)cleanUp{
     _showResolve = nil;
     _showReject = nil;
-    _loaded = false;
 }
 
 - (void)bridgeDidForeground:(NSNotification *)notification{
@@ -152,5 +150,4 @@ withFinishState:(UnityAdsFinishState)state {
         [_adViewController dismissViewControllerAnimated:NO completion:nil];
     }
 }
-
 @end

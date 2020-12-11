@@ -8,11 +8,7 @@ export default function App() {
 
   useEffect(() => {
     console.log("load challenge");
-    UnityAds.loadAd('3873165', 'video', __DEV__).then(value=>{
-      console.log(value);
-    }).catch(error=>{
-      console.log(error);
-    });
+    UnityAds.loadAd('3873164', 'video', __DEV__);
   }, []);
 
   const showAd = async () => {

@@ -9,6 +9,8 @@
 @property (nonatomic, strong) UIViewController *adViewController;
 @property (nonatomic, strong) RCTPromiseResolveBlock showResolve;
 @property (nonatomic, strong) RCTPromiseRejectBlock showReject;
+@property (nonatomic, strong) RCTPromiseResolveBlock loadResolve;
+@property (nonatomic, strong) RCTPromiseRejectBlock loadReject;
 @property (nonatomic, strong) NSString *placementId;
 @property (nonatomic) bool loaded;
 @property (nonatomic) bool isBackground;
@@ -37,17 +39,15 @@ RCT_EXPORT_MODULE(UnityAds)
 }
 
 RCT_EXPORT_METHOD(
-    multiply:(float)a 
-    withB:(float)b
-    withResolver:(RCTPromiseResolveBlock)resolve
-    withRejecter:(RCTPromiseRejectBlock)reject){
-}
-
-RCT_EXPORT_METHOD(
-    initialized:(NSString *)gameId
+    loadAd:(NSString *)gameId
     placement:(NSString *)placementId 
     testMode:(BOOL)testMode
+    loadResolver:(RCTPromiseResolveBlock)resolve
+    loadRejector:(RCTPromiseRejectBlock)reject
 ){
+    _loadResolve = resolve;
+    _loadReject = reject;
+
     [UnityAds initialize:gameId delegate:self testMode:testMode];
     _placementId = placementId;
 }
@@ -72,6 +72,7 @@ RCT_EXPORT_METHOD(
 
 - (void)unityAdsReady:(NSString *)placementId {
     _loaded = true;
+    _loadResolve(@(_loaded));
 }
 
 - (void)unityAdsDidStart:(NSString *)placementId {

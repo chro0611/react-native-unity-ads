@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import UnityAds from 'react-native-unity-ads';
 
@@ -6,8 +6,13 @@ type FinishState = "ERROR" | "SKIPPED" | "COMPLETED" | "NOT_LOADED";
 
 export default function App() {
 
-  React.useEffect(() => {
-    UnityAds.initialized('3923800', 'video', __DEV__);
+  useEffect(() => {
+    console.log("load challenge");
+    UnityAds.loadAd('3873165', 'video', __DEV__).then(value=>{
+      console.log(value);
+    }).catch(error=>{
+      console.log(error);
+    });
   }, []);
 
   const showAd = async () => {

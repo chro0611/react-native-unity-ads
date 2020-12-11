@@ -23,14 +23,22 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
   Promise showPromise;
   Promise loadPromise;
 
+  ReactApplicationContext reactContext;
+
   UnityAdsModule(ReactApplicationContext context){
     super(context);
+
+    reactContext = context;
   }
 
   private class UnityAdsListener implements IUnityAdsListener{
     @Override
     public void onUnityAdsReady(String placementId){
       isReady = true;
+
+      if(loadPromise != null){
+        loadPromise.resolve(isReady);
+      }
     }
 
     @Override
@@ -40,29 +48,36 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
 
     @Override
     public void onUnityAdsFinish (String placementId, UnityAds.FinishState finishState){
-
       try{
         if(showPromise != null)
         {
           showPromise.resolve(finishState.toString());
-          isReady = false;
+          cleanUp();
         }
       }catch(Exception ex){
         showPromise.resolve("ERROR");
         isReady = false;
+        cleanUp();
       }
     }
 
     @Override
     public void onUnityAdsError (UnityAds.UnityAdsError error, String message){
       try{
+        if(loadPromise != null)
+        {
+          loadPromise.reject("E_FAILED_TOLOAD", message);
+        }
+
         if(showPromise != null)
         {
           showPromise.reject("E_FAILED_TO_LOAD", message);
-          isReady = false;
         }
+
+        cleanUp();
       }catch(Exception ex){
         isReady = false;
+        cleanUp();
       }
     }
   }
@@ -72,22 +87,17 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
     return "UnityAds";
   }
 
-  // Example method
-  // See https://facebook.github.io/react-native/docs/native-modules-android
   @ReactMethod
-  public void multiply(int a, int b, Promise promise){
-    promise.resolve(a * b);
-  }
-
-  @ReactMethod
-  public void initialized(String gameId, String placementId, Boolean test){
+  public void loadAd(String gameId, String placementId, Boolean test, Promise p){
+    loadPromise = p;
     testMode = test;
     unityGameID = gameId;
     unityPlacementID = placementId;
 
     final UnityAdsListener adListener = new UnityAdsListener();
     UnityAds.addListener(adListener);
-    UnityAds.initialize(this.getReactApplicationContext(), unityGameID, testMode);
+    //UnityAds.initialize(this.getReactApplicationContext(), unityGameID, testMode);
+    UnityAds.initialize(reactContext.getApplicationContext(), unityGameID, testMode);
   }
 
   @ReactMethod
@@ -101,9 +111,16 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
 
     if(UnityAds.isReady(unityPlacementID)){
       UnityAds.show(this.getCurrentActivity(), unityPlacementID);
+      //UnityAds.show(reactContext.getCurrentActivity(), unityPlacementID);
+
     }else{
       showPromise.resolve("NOT_LOADED");
       showPromise = null;
     }
+  }
+
+  public void cleanUp(){
+    showPromise = null;
+    loadPromise = null;
   }
 }

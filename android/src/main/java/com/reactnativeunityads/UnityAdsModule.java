@@ -15,8 +15,6 @@ import android.util.Log;
 
 public class UnityAdsModule extends ReactContextBaseJavaModule {
 
-  ReactApplicationContext reactContext;
-
   String unityGameID;
   String unityPlacementID;
   boolean testMode = true;
@@ -27,7 +25,6 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
 
   UnityAdsModule(ReactApplicationContext context){
     super(context);
-    reactContext = context;
   }
 
   private class UnityAdsListener implements IUnityAdsListener{
@@ -90,7 +87,7 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
 
     final UnityAdsListener adListener = new UnityAdsListener();
     UnityAds.addListener(adListener);
-    UnityAds.initialize(reactContext.getApplicationContext(), unityGameID, testMode);
+    UnityAds.initialize(this.getReactApplicationContext(), unityGameID, testMode);
   }
 
   @ReactMethod
@@ -103,7 +100,7 @@ public class UnityAdsModule extends ReactContextBaseJavaModule {
     showPromise = p;
 
     if(UnityAds.isReady(unityPlacementID)){
-      UnityAds.show(reactContext.getCurrentActivity(), unityPlacementID);
+      UnityAds.show(this.getCurrentActivity(), unityPlacementID);
     }else{
       showPromise.resolve("NOT_LOADED");
       showPromise = null;

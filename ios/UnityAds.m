@@ -42,36 +42,66 @@ RCT_EXPORT_METHOD(
     loadAd:(NSString *)gameId
     placement:(NSString *)placementId 
     testMode:(BOOL)testMode
-    loadResolver:(RCTPromiseResolveBlock)resolve
-    loadRejector:(RCTPromiseRejectBlock)reject
+    loadAdResolver:(RCTPromiseResolveBlock)loadResolve
+    loadAdRejector:(RCTPromiseRejectBlock)loadReject
 ){
-    _loadResolve = resolve;
-    _loadReject = reject;
+    if(_loadResolve == nil)
+    {
+        _loadResolve = loadResolve;
+        _loadReject = loadReject;
+    }
 
-    [UnityAds initialize:gameId delegate:self testMode:testMode];
+    if(!UnityAds.isInitialized)
+    {
+        [UnityAds initialize:gameId testMode:testMode];
+        [UnityAds addDelegate:self];
+    }
+    
     _placementId = placementId;
 }
 
 RCT_EXPORT_METHOD(
-    isLoad:(RCTPromiseResolveBlock)resolve 
-    isLoadRejector:(RCTPromiseRejectBlock)reject
+    isLoad:(RCTPromiseResolveBlock)isLoadresolve 
+    isLoadRejector:(RCTPromiseRejectBlock)isLoadreject
 ){
-    resolve(@(_loaded));
+    @try{
+        isLoadresolve(@(UnityAds.isReady));
+    }@catch(NSException *e) {
+        isLoadreject(@"getLoad_failed", @"load error", nil);
+    }
 }
 
 RCT_EXPORT_METHOD(
-    showAd:(RCTPromiseResolveBlock)resolve 
-    showAdRejector:(RCTPromiseRejectBlock)reject
+    showAd:(RCTPromiseResolveBlock)showResolve 
+    showAdRejector:(RCTPromiseRejectBlock)showReject
 ){
-    _showResolve = resolve;
-    _showReject = reject;
     
-    [UnityAds show:RCTPresentedViewController() placementId:_placementId];
+    if(_showResolve == nil)
+    {
+        _showResolve = showResolve;
+        _showReject = showReject;
+    }
+    
+    __block NSString *placementId = _placementId;
+    
+    void (^runShow)(void) = ^(void) {
+        [UnityAds show:RCTPresentedViewController() placementId:placementId];
+    };
+    
+    dispatch_async(dispatch_get_main_queue(), runShow);
 }
 
 - (void)unityAdsReady:(NSString *)placementId {
     _loaded = true;
-    _loadResolve(@(true));
+    if(_loadResolve != nil)
+    {
+        @try{
+            _loadResolve(@(UnityAds.isReady));
+            _loadResolve = nil;
+        }@catch(NSException *e){
+            
+        }
+    }
 }
 
 - (void)unityAdsDidStart:(NSString *)placementId {
@@ -81,14 +111,22 @@ RCT_EXPORT_METHOD(
 withFinishState:(UnityAdsFinishState)state {
     NSString *result = [self convertToString:state];
     
-    _showResolve(result);
+    if(_showResolve != nil)
+    {
+        _showResolve(result);
+    }
+
     [self cleanUp];
 }
 
 - (void)unityAdsDidError:(UnityAdsError)error withMessage:(NSString *)message {
-    //_showReject(@"E_FAILED_TO_LOAD", [self convertToErrorString:error], nil);
+    _showReject(@"E_FAILED_TO_LOAD", [self convertToErrorString:error], nil);
 
-    _showResolve(@"ERROR");
+//    if(_showResolve != nil)
+//    {
+//        _showResolve(@(false));
+//    }
+
     [self cleanUp];
 }
 

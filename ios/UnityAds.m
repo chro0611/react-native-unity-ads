@@ -54,12 +54,8 @@ RCT_EXPORT_METHOD(
 
     if(!UnityAds.isInitialized)
     {
-        void (^runLoad)(void) = ^(void) {
-            [UnityAds initialize:gameId testMode:testMode];
-            [UnityAds addDelegate:self];
-        };
-    
-        dispatch_async(dispatch_get_main_queue(), runLoad);
+        [UnityAds initialize:gameId testMode:testMode];
+        [UnityAds addDelegate:self];
     }
     
     _placementId = placementId;

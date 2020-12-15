@@ -12,8 +12,6 @@ export default function App() {
   }, []);
 
   const showAd = async () => {
-    console.log(await UnityAds.isLoad());
-
     UnityAds.isLoad().then(isLoad=>{
       if(isLoad){
         UnityAds.showAd().then((result)=>{

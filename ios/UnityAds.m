@@ -3,6 +3,7 @@
 
 #import <React/RCTUtils.h>
 #import <UnityAds/UnityAds.h>
+#import <React/RCTRootView.h>
 
 @interface UnityAdsManager () <UnityAdsDelegate>
 
@@ -53,8 +54,12 @@ RCT_EXPORT_METHOD(
 
     if(!UnityAds.isInitialized)
     {
-        [UnityAds initialize:gameId testMode:testMode];
-        [UnityAds addDelegate:self];
+        void (^runLoad)(void) = ^(void) {
+            [UnityAds initialize:gameId testMode:testMode];
+            [UnityAds addDelegate:self];
+        };
+    
+        dispatch_async(dispatch_get_main_queue(), runLoad);
     }
     
     _placementId = placementId;
@@ -85,7 +90,11 @@ RCT_EXPORT_METHOD(
     __block NSString *placementId = _placementId;
     
     void (^runShow)(void) = ^(void) {
-        [UnityAds show:RCTPresentedViewController() placementId:placementId];
+        
+        UIViewController *controller = RCTPresentedViewController();
+        //[controller setAdditionalSafeAreaInsets:UIEdgeInsetsMake(100, 0, 0, 0)];
+        
+        [UnityAds show:controller placementId:placementId];
     };
     
     dispatch_async(dispatch_get_main_queue(), runShow);
@@ -188,4 +197,11 @@ withFinishState:(UnityAdsFinishState)state {
         [_adViewController dismissViewControllerAnimated:NO completion:nil];
     }
 }
+
+- (CGFloat)statusBarHeight {
+    // TODO: It would be better to use sharedApplication.statusBarFrame.size.height,
+    // but it has unexpected value at this time.
+    return 20.0f;
+}
+
 @end

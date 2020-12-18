@@ -86,11 +86,7 @@ RCT_EXPORT_METHOD(
     __block NSString *placementId = _placementId;
     
     void (^runShow)(void) = ^(void) {
-        
-        UIViewController *controller = RCTPresentedViewController();
-        //[controller setAdditionalSafeAreaInsets:UIEdgeInsetsMake(100, 0, 0, 0)];
-        
-        [UnityAds show:controller placementId:placementId];
+        [UnityAds show:RCTPresentedViewController() placementId:placementId];
     };
     
     dispatch_async(dispatch_get_main_queue(), runShow);
@@ -115,7 +111,7 @@ RCT_EXPORT_METHOD(
 - (void)unityAdsDidFinish:(NSString *)placementId
 withFinishState:(UnityAdsFinishState)state {
     NSString *result = [self convertToString:state];
-    
+        
     if(_showResolve != nil)
     {
         _showResolve(result);

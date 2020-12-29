@@ -12,15 +12,10 @@ export default function App() {
   }, []);
 
   const showAd = async () => {
-    UnityAds.isLoad().then(isLoad=>{
-      if(isLoad){
-        UnityAds.showAd().then((result)=>{
-          console.log(result);
-        }).catch(error=>{
-          console.log(error);
-        });
+      if(await UnityAds.isLoad()){
+        let result = await UnityAds.showAd();
+        console.log(result);
       }
-    });
   }
 
   return (

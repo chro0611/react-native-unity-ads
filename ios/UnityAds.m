@@ -55,8 +55,8 @@ RCT_EXPORT_METHOD(
     if(!UnityAds.isInitialized)
     {
         [UnityAds initialize:gameId testMode:testMode];
-        [UnityAds addDelegate:self];
     }
+    [UnityAds addDelegate:self];
     
     _placementId = placementId;
 }
@@ -76,13 +76,9 @@ RCT_EXPORT_METHOD(
     showAd:(RCTPromiseResolveBlock)showResolve 
     showAdRejector:(RCTPromiseRejectBlock)showReject
 ){
-    
-    if(_showResolve == nil)
-    {
-        _showResolve = showResolve;
-        _showReject = showReject;
-    }
-    
+    _showResolve = showResolve;
+    _showReject = showReject;
+
     __block NSString *placementId = _placementId;
     
     void (^runShow)(void) = ^(void) {
@@ -111,7 +107,7 @@ RCT_EXPORT_METHOD(
 - (void)unityAdsDidFinish:(NSString *)placementId
 withFinishState:(UnityAdsFinishState)state {
     NSString *result = [self convertToString:state];
-        
+     
     if(_showResolve != nil)
     {
         _showResolve(result);

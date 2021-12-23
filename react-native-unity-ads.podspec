@@ -18,6 +18,6 @@ Pod::Spec.new do |s|
   
 
   s.dependency "React"
-  s.dependency "UnityAds"
+  s.dependency "UnityAds", "~> 3.7.5"
 
 end

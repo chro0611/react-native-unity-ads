@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c55d59a-7eb0-4460-9c0b-4863930ec1ea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/reactnativeunityads/UnityAdsModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/reactnativeunityads/UnityAdsModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../example/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../example/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/UnityAds.m" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/UnityAds.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../src/index.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1lAkGkFSZPmd7JmlSWDnvVeuoMx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+        <option name="com.soywiz.korge.intellij.UpdateResourceBeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c55d59a-7eb0-4460-9c0b-4863930ec1ea" name="Default Changelist" comment="" />
+      <created>1607047189319</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607047189319</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="251" y="275" key="#PSD" timestamp="1607049138990">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="251" y="275" key="#PSD/0.23.1680.1027/-1920.-61.1920.1057@0.23.1680.1027" timestamp="1607049138990" />
+    <state x="-1496" y="129" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607047313284">
+      <screen x="-1920" y="-61" width="1920" height="1057" />
+    </state>
+    <state x="-1496" y="129" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027/-1920.-61.1920.1057@-1920.-61.1920.1057" timestamp="1607047313284" />
+    <state x="464" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607048792397">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="464" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1680.1027/-1920.-61.1920.1057@0.23.1680.1027" timestamp="1607048792397" />
+    <state x="-1295" y="174" width="670" height="676" key="search.everywhere.popup" timestamp="1607047452216">
+      <screen x="-1920" y="-61" width="1920" height="1057" />
+    </state>
+    <state x="-1295" y="174" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027/-1920.-61.1920.1057@-1920.-61.1920.1057" timestamp="1607047452216" />
+  </component>
+</project>

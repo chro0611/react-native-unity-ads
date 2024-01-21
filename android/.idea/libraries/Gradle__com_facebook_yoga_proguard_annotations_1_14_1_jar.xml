@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.facebook.yoga:proguard-annotations:1.14.1@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.yoga/proguard-annotations/1.14.1/3d015bb821875657ac8e4b808a223aae339defb2/proguard-annotations-1.14.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.yoga/proguard-annotations/1.14.1/e19929922a3ab95aec5f0ed6ffc2a22a4eb903a/proguard-annotations-1.14.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

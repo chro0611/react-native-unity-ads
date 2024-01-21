@@ -1,21 +1,17 @@
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
-  def kotlin_version = rootProject.ext.has('kotlinVersion') ? rootProject.ext.get('kotlinVersion') : project.properties['UnityAds_kotlinVersion']
-
   repositories {
     google()
     jcenter()
+    mavenCentral()
   }
-
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
-    // noinspection DifferentKotlinGradleVersion
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "com.android.tools.build:gradle:7.0.4"
+    classpath "com.unity3d.ads:unity-ads:4.5.0"
   }
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 def getExtOrDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties['UnityAds_' + name]
@@ -28,12 +24,13 @@ def getExtOrIntegerDefault(name) {
 android {
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
   buildToolsVersion getExtOrDefault('buildToolsVersion')
+  
   defaultConfig {
-    minSdkVersion 19
+    minSdkVersion 21
     targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
-    versionCode 1
-    versionName "1.0"
-
+    versionCode 50
+    versionName "4.0.1"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
 
   buildTypes {
@@ -42,6 +39,7 @@ android {
     }
   }
   lintOptions {
+    abortOnError false
     disable 'GradleCompatible'
   }
   compileOptions {
@@ -121,13 +119,8 @@ repositories {
   }
 }
 
-def kotlin_version = getExtOrDefault('kotlinVersion')
-
 dependencies {
   // noinspection GradleDynamicVersion
-  api 'com.facebook.react:react-native:+'
-  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-  //implementation 'com.unity3d.ads:unity-ads:3.5.1@aar'
-  implementation project(path: ':unity-ads')
+  implementation "com.facebook.react:react-native:+"
+  implementation "com.unity3d.ads:unity-ads:4.5.0"
 }

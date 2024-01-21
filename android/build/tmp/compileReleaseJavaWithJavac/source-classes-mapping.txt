@@ -1,0 +1,9 @@
+com/reactnativeunityads/UnityAdsModule.java
+ com.reactnativeunityads.UnityAdsModule
+ com.reactnativeunityads.UnityAdsModule$1
+ com.reactnativeunityads.UnityAdsModule$2
+ com.reactnativeunityads.UnityAdsModule$3
+com/reactnativeunityads/UnityAdsPackage.java
+ com.reactnativeunityads.UnityAdsPackage
+com/reactnativeunityads/BuildConfig.java
+ com.reactnativeunityads.BuildConfig

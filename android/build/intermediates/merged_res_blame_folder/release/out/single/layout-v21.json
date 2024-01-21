@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Parth\\Documents\\Development\\crypto-wallet-app\\LCRN14-crypto-wallet-app-master\\node_modules\\react-native-unity-ads-moon\\android\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Parth\\.gradle\\caches\\transforms-2\\files-2.1\\124a88d326f87af8f8b67c3e2ab310a4\\core-1.0.1\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\Parth\\Documents\\Development\\crypto-wallet-app\\LCRN14-crypto-wallet-app-master\\node_modules\\react-native-unity-ads-moon\\android\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Parth\\.gradle\\caches\\transforms-2\\files-2.1\\124a88d326f87af8f8b67c3e2ab310a4\\core-1.0.1\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\Parth\\Documents\\Development\\crypto-wallet-app\\LCRN14-crypto-wallet-app-master\\node_modules\\react-native-unity-ads-moon\\android\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Parth\\.gradle\\caches\\transforms-2\\files-2.1\\124a88d326f87af8f8b67c3e2ab310a4\\core-1.0.1\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Parth\\Documents\\Development\\crypto-wallet-app\\LCRN14-crypto-wallet-app-master\\node_modules\\react-native-unity-ads-moon\\android\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Parth\\.gradle\\caches\\transforms-2\\files-2.1\\124a88d326f87af8f8b67c3e2ab310a4\\core-1.0.1\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]
